@@ -1,0 +1,8 @@
+name: awesome_lint_workspace
+
+packages:
+  - packages/**
+
+scripts:
+  analyze:
+    exec: dart analyze .
