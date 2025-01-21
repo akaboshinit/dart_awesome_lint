@@ -1,7 +1,7 @@
 import 'package:analyzer/dart/ast/ast.dart';
 import 'package:analyzer/source/source_range.dart';
 import 'package:custom_lint_builder/custom_lint_builder.dart';
-import 'package:dart_awesome_lint/lints/primitive_order/shered.dart';
+import 'package:dart_awesome_lint/lints/primitive_order/shared.dart';
 
 class ConvertPrimitiveOrderAssist extends DartAssist {
   static const _name = 'Fix primitive field order';
