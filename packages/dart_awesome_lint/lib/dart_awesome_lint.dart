@@ -1,8 +1,17 @@
-/// Support for doing something awesome.
-///
-/// More dartdocs go here.
-library;
+import 'package:custom_lint_builder/custom_lint_builder.dart';
+import 'package:dart_awesome_lint/lints/primitive_order/convert_primitive_order_assist.dart';
+import 'package:dart_awesome_lint/lints/primitive_order/enforce_primitive_order_lint.dart';
 
-export 'src/dart_awesome_lint_base.dart';
+PluginBase createPlugin() => _DartAwesomeLint();
 
-// TODO: Export any libraries intended for clients of this package.
+class _DartAwesomeLint extends PluginBase {
+  @override
+  List<LintRule> getLintRules(CustomLintConfigs configs) => const [
+        EnforcePrimitiveOrderLint(),
+      ];
+
+  @override
+  List<Assist> getAssists() => [
+        ConvertPrimitiveOrderAssist(),
+      ];
+}
