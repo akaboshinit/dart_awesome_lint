@@ -74,10 +74,10 @@ For bug reports or suggestions, please open an Issue.
 💡 Want to make rule creation easier? Join us in improving the development environment!
 
 ## 🚀 Roadmap
-🆕 Add new lint rules
-🛠️ Expand auto-fix capabilities
-🙌 Incorporate user feedback
-✏️ Simplify the process of adding new rules
+- 🆕 Add new lint rules
+- 🛠️ Expand auto-fix capabilities
+- 🙌 Incorporate user feedback
+- ✏️ Simplify the process of adding new rules
 
 ## 📜 License
 This project is licensed under the MIT License.
