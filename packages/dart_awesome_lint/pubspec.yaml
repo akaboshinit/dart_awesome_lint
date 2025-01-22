@@ -1,5 +1,5 @@
 name: dart_awesome_lint
-description: A starting point for Dart libraries or applications.
+description: "A Dart package that provides custom lint rules for the Dart language."
 version: 0.0.1
 repository: https://github.com/akaboshinit/dart_awesome_lint
 
