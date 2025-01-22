@@ -1,4 +1,0 @@
-# melos_managed_dependency_overrides: dart_awesome_lint
-dependency_overrides:
-  dart_awesome_lint:
-    path: ../dart_awesome_lint
