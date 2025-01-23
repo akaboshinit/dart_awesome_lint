@@ -11,10 +11,10 @@ dependencies:
     sdk: flutter
 
 dev_dependencies:
-  custom_lint: ^0.6.2
+  custom_lint: 0.6.2
   dart_awesome_lint:
     path: ../dart_awesome_lint
-  very_good_analysis: ^7.0.0
+  very_good_analysis: 7.0.0
 
 flutter:
   uses-material-design: true
