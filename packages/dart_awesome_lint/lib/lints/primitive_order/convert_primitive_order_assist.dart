@@ -36,62 +36,65 @@ class ConvertPrimitiveOrderAssist extends DartAssist {
             final next = members.elementAtOrNull(i + 1);
 
             if (next != null && current.level > next.level) {
-              if (!target.intersects(node.sourceRange)) return;
-            }
-          }
-
-          reporter
-              .createChangeBuilder(
-            priority: _priority,
-            message: _name,
-          )
-              .addDartFileEdit((builder) {
-            final sortedMembers = members.toList()
-              ..sort((a, b) {
-                final levelComparison = a.level.compareTo(b.level);
-                if (levelComparison != 0) {
-                  return levelComparison;
-                }
-                return a.field.fields.variables.first.name.lexeme.compareTo(
-                  b.field.fields.variables.first.name.lexeme,
-                );
-              });
-
-            final replacementProps = sortedMembers.indexed.map((e) {
-              final index = e.$1;
-              final member = e.$2;
-
-              final source = member.field.toSource();
-
-              if (index == 0) {
-                return source;
+              final sourceRange = current.field.fields.sourceRange;
+              if (!target.intersects(sourceRange)) {
+                return;
               }
+            }
 
-              final currentBeginToken = member.field.beginToken;
+            reporter
+                .createChangeBuilder(
+              priority: _priority,
+              message: _name,
+            )
+                .addDartFileEdit((builder) {
+              final sortedMembers = members.toList()
+                ..sort((a, b) {
+                  final levelComparison = a.level.compareTo(b.level);
+                  if (levelComparison != 0) {
+                    return levelComparison;
+                  }
+                  return a.field.fields.variables.first.name.lexeme.compareTo(
+                    b.field.fields.variables.first.name.lexeme,
+                  );
+                });
 
-              final indent = ''.padLeft(
-                resolver.lineInfo
-                    .getLocation(currentBeginToken.offset - 1)
-                    .columnNumber,
+              final replacementProps = sortedMembers.indexed.map((e) {
+                final index = e.$1;
+                final member = e.$2;
+
+                final source = member.field.toSource();
+
+                if (index == 0) {
+                  return source;
+                }
+
+                final currentBeginToken = member.field.beginToken;
+
+                final indent = ''.padLeft(
+                  resolver.lineInfo
+                      .getLocation(currentBeginToken.offset - 1)
+                      .columnNumber,
+                );
+
+                return indent + source;
+              }).join(
+                '\n',
               );
 
-              return indent + source;
-            }).join(
-              '\n',
-            );
+              final fieldsFirstTokenOffset = fields.first.beginToken.offset;
+              final fieldsLastTokenOffset =
+                  fields.last.semicolon.offset + fields.last.semicolon.length;
 
-            final fieldsFirstTokenOffset = fields.first.beginToken.offset;
-            final fieldsLastTokenOffset =
-                fields.last.semicolon.offset + fields.last.semicolon.length;
-
-            builder.addSimpleReplacement(
-              SourceRange(
-                fieldsFirstTokenOffset,
-                fieldsLastTokenOffset - fieldsFirstTokenOffset,
-              ),
-              replacementProps,
-            );
-          });
+              builder.addSimpleReplacement(
+                SourceRange(
+                  fieldsFirstTokenOffset,
+                  fieldsLastTokenOffset - fieldsFirstTokenOffset,
+                ),
+                replacementProps,
+              );
+            });
+          }
         }
       },
     );
