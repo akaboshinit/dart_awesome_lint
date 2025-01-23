@@ -1,6 +1,6 @@
 name: dart_awesome_lint
 description: "A Dart package that provides custom lint rules for the Dart language."
-version: 0.0.1
+version: 0.0.2
 repository: https://github.com/akaboshinit/dart_awesome_lint
 
 environment:
