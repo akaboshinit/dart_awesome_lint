@@ -11,7 +11,6 @@ This package provides **custom lint rules** to enforce best practices and mainta
 
 ## 📋 List of Lint Rules
 
-### 1️⃣ **Mandatory Comments for Methods**
 **Rule**: `enforce_primitive_order`
 - Forces class properties to be ordered in primitive order
 - Sort the properties alphabetically by type in primitive order
