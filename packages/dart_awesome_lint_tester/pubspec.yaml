@@ -5,15 +5,17 @@ version: 0.1.0
 
 environment:
   sdk: '>=3.3.0 <4.0.0'
+  flutter: 3.24.4
 
 dependencies:
   flutter:
     sdk: flutter
 
 dev_dependencies:
-  custom_lint: 0.6.2
+  custom_lint: 0.7.0
   dart_awesome_lint:
     path: ../dart_awesome_lint
+  test: ^1.25.14
   very_good_analysis: 7.0.0
 
 flutter:
