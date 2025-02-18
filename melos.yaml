@@ -6,3 +6,14 @@ packages:
 scripts:
   analyze:
     exec: dart analyze .
+
+  lint:dart:
+    exec: dart run custom_lint
+    packageFilters:
+      dependsOn: [ "custom_lint"]
+      noDependsOn: "flutter"
+
+  lint:flutter:
+    exec: flutter pub run custom_lint
+    packageFilters:
+      dependsOn: [ "custom_lint", "flutter" ]
