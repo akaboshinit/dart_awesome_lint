@@ -4,15 +4,15 @@ publish_to: 'none'
 version: 0.1.0
 
 environment:
-  sdk: '>=3.3.0 <4.0.0'
-  flutter: 3.24.4
+  sdk: '3.6.1'
+  flutter: 3.27.3
 
 dependencies:
   flutter:
     sdk: flutter
 
 dev_dependencies:
-  custom_lint: 0.7.0
+  custom_lint: 0.7.1
   dart_awesome_lint:
     path: ../dart_awesome_lint
   test: ^1.25.14
