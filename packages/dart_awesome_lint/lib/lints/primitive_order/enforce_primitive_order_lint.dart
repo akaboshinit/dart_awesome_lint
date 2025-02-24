@@ -42,10 +42,10 @@ class EnforcePrimitiveOrderLint extends DartLintRule {
 
             if (next != null && current.level > next.level) {
               final sourceRange = current.field.fields.sourceRange;
-              reporter.reportErrorForOffset(
-                _code,
-                sourceRange.offset,
-                sourceRange.length,
+              reporter.atOffset(
+                offset: sourceRange.offset,
+                length: sourceRange.length,
+                errorCode: _code,
               );
             }
           }
